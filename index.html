@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drink Fight</title>
+</head>
+<body>
+  <h3>Pick a drink and face the computer!<br>
+  Each drink beats two others:<br>
+  - Irn Bru beats Seven Up and Lemonade<br>
+  - Pepsi beats Irn Bru and Coke<br>
+  - Seven Up beats Pepsi and Lemonade<br>
+  - Coke beats Seven Up and Irn Bru<br>
+  - Lemonade beats Pepsi and Coke<br>
+  Ties happen when both pick the same drink.
+  </h3>
+  <button onclick="hello(); irnBru();">Irn Bru</button>
+  <button onclick="hello(); pepsi();">Pepsi</button>
+  <button onclick="hello(); sevenUp();">Seven Up</button>
+  <button onclick="hello(); coke();">Coke</button>
+  <button onclick="hello(); lemonade();">Lemonade</button>
+
+  <script>
+    let cM = '';
+    let R = '';
+
+    function hello() {
+      const ranDom = Math.random();
+      if (ranDom < 1/5) {
+        cM = 'Irn Bru';
+      } else if (ranDom < 2/5) {
+        cM = 'Pepsi';
+      } else if (ranDom < 3/5) {
+        cM = 'Seven Up';
+      } else if (ranDom < 4/5) {
+        cM = 'Coke';
+      } else {
+        cM = 'Lemonade';
+      }
+      console.log(`Computer picked: ${cM}`);
+    }
+
+    function irnBru() {
+      if (cM === 'Irn Bru') R = 'Tie';
+      else if (cM === 'Seven Up' || cM === 'Lemonade') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Irn Bru. Computer picked ${cM}. ${R}`);
+    }
+
+    function pepsi() {
+      if (cM === 'Pepsi') R = 'Tie';
+      else if (cM === 'Irn Bru' || cM === 'Coke') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Pepsi. Computer picked ${cM}. ${R}`);
+    }
+
+    function sevenUp() {
+      if (cM === 'Seven Up') R = 'Tie';
+      else if (cM === 'Pepsi' || cM === 'Lemonade') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Seven Up. Computer picked ${cM}. ${R}`);
+    }
+
+    function coke() {
+      if (cM === 'Coke') R = 'Tie';
+      else if (cM === 'Seven Up' || cM === 'Irn Bru') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Coke. Computer picked ${cM}. ${R}`);
+    }
+
+    function lemonade() {
+      if (cM === 'Lemonade') R = 'Tie';
+      else if (cM === 'Pepsi' || cM === 'Coke') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Lemonade. Computer picked ${cM}. ${R}`);
+    }
+  </script>
+</body>
+</html>
