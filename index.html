@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="google-site-verification" content="a16597665ce2911c" />
   <title>Drink Fight</title>
 
   <!-- Google tag (gtag.js) -->
@@ -16,38 +15,37 @@
 </head>
 <body>
   <h3>
-     Hello Player Please Do This. Pick a drink and face the computer!<br>
-  Each drink beats two others:<br>
-  - Irn Bru beats Seven Up and Lemonade<br>
-  - Pepsi beats Irn Bru and Coke<br>
-  - Seven Up beats Pepsi and Lemonade<br>
-  - Coke beats Seven Up and Irn Bru<br>
-  - Lemonade beats Pepsi and Coke<br>
-  Ties happen when both pick the same drink.
+    Hello Player Please Do This. Pick a drink and face the computer!<br>
   </h3>
+
   <button onclick="hello(); irnBru();">Irn Bru</button>
   <button onclick="hello(); pepsi();">Pepsi</button>
   <button onclick="hello(); sevenUp();">Seven Up</button>
   <button onclick="hello(); coke();">Coke</button>
   <button onclick="hello(); lemonade();">Lemonade</button>
+  <button onclick="hello(); tea();">Tea</button>
+  <button onclick="hello(); fanta();">Fanta</button>
+  <button onclick="hello(); sprite();">Sprite</button>
+  <button onclick="hello(); water();">Water</button>
+  <button onclick="hello(); coffee();">Coffee</button>
+  <button onclick="hello(); milk();">Milk</button>
+  <button onclick="hello(); juice();">Juice</button>
+  <button onclick="hello(); colaZero();">Cola Zero</button>
+  <button onclick="hello(); drPepper();">Dr Pepper</button>
+  <button onclick="hello(); gingerAle();">Ginger Ale</button>
+  <button onclick="hello(); tonic();">Tonic</button>
 
   <script>
     let cM = '';
     let R = '';
 
     function hello() {
-      const ranDom = Math.random();
-      if (ranDom < 1/5) {
-        cM = 'Irn Bru';
-      } else if (ranDom < 2/5) {
-        cM = 'Pepsi';
-      } else if (ranDom < 3/5) {
-        cM = 'Seven Up';
-      } else if (ranDom < 4/5) {
-        cM = 'Coke';
-      } else {
-        cM = 'Lemonade';
-      }
+      const drinks = [
+        'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea',
+        'Fanta','Sprite','Water','Coffee','Milk','Juice',
+        'Cola Zero','Dr Pepper','Ginger Ale','Tonic'
+      ];
+      cM = drinks[Math.floor(Math.random() * drinks.length)];
       console.log(`Computer picked: ${cM}`);
     }
 
@@ -81,9 +79,86 @@
 
     function lemonade() {
       if (cM === 'Lemonade') R = 'Tie';
-      else if (cM === 'Pepsi' || cM === 'Coke') R = 'You Win';
+      else if (cM === 'Pepsi' || cM === 'Coke' || cM === 'Tea') R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Lemonade. Computer picked ${cM}. ${R}`);
+    }
+
+    function tea() {
+      if (cM === 'Tea') R = 'Tie';
+      else if (cM === 'Pepsi' || cM === 'Coke') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Tea. Computer picked ${cM}. ${R}`);
+    }
+
+    function fanta() {
+      if (cM === 'Fanta') R = 'Tie';
+      else if (cM === 'Sprite' || cM === 'Water') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Fanta. Computer picked ${cM}. ${R}`);
+    }
+
+    function sprite() {
+      if (cM === 'Sprite') R = 'Tie';
+      else if (cM === 'Coffee' || cM === 'Milk') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Sprite. Computer picked ${cM}. ${R}`);
+    }
+
+    function water() {
+      if (cM === 'Water') R = 'Tie';
+      else if (cM === 'Juice' || cM === 'Cola Zero') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Water. Computer picked ${cM}. ${R}`);
+    }
+
+    function coffee() {
+      if (cM === 'Coffee') R = 'Tie';
+      else if (cM === 'Dr Pepper' || cM === 'Ginger Ale') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Coffee. Computer picked ${cM}. ${R}`);
+    }
+
+    function milk() {
+      if (cM === 'Milk') R = 'Tie';
+      else if (cM === 'Tonic' || cM === 'Juice') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Milk. Computer picked ${cM}. ${R}`);
+    }
+
+    function juice() {
+      if (cM === 'Juice') R = 'Tie';
+      else if (cM === 'Fanta' || cM === 'Sprite') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Juice. Computer picked ${cM}. ${R}`);
+    }
+
+    function colaZero() {
+      if (cM === 'Cola Zero') R = 'Tie';
+      else if (cM === 'Pepsi' || cM === 'Irn Bru') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Cola Zero. Computer picked ${cM}. ${R}`);
+    }
+
+    function drPepper() {
+      if (cM === 'Dr Pepper') R = 'Tie';
+      else if (cM === 'Seven Up' || cM === 'Lemonade') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Dr Pepper. Computer picked ${cM}. ${R}`);
+    }
+
+    function gingerAle() {
+      if (cM === 'Ginger Ale') R = 'Tie';
+      else if (cM === 'Tea' || cM === 'Water') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Ginger Ale. Computer picked ${cM}. ${R}`);
+    }
+
+    function tonic() {
+      if (cM === 'Tonic') R = 'Tie';
+      else if (cM === 'Coke' || cM === 'Milk') R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Tonic. Computer picked ${cM}. ${R}`);
     }
   </script>
 </body>
