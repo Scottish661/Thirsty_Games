@@ -15,7 +15,31 @@
 </head>
 <body>
   <h3>
-    Hello Player Please Do This. Pick a drink and face the computer!<br>
+    Welcome to the Thirsty Games! Pick a drink and face the computer!<br>
+    Each drink beats 8 others, loses to 8 others, and ties only with itself.<br>
+    <h3>
+  Welcome to the Thirsty Games! Pick a drink and face the computer!<br>
+  Each drink beats 8 others, loses to 8 others, and ties only with itself.<br><br>
+
+  - Irn Bru beats: Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta, Sprite, Water<br>
+  - Pepsi beats: Seven Up, Coke, Lemonade, Tea, Fanta, Sprite, Water, Coffee<br>
+  - Seven Up beats: Coke, Lemonade, Tea, Fanta, Sprite, Water, Coffee, Milk<br>
+  - Coke beats: Lemonade, Tea, Fanta, Sprite, Water, Coffee, Milk, Juice<br>
+  - Lemonade beats: Tea, Fanta, Sprite, Water, Coffee, Milk, Juice, Cola Zero<br>
+  - Tea beats: Fanta, Sprite, Water, Coffee, Milk, Juice, Cola Zero, Dr Pepper<br>
+  - Fanta beats: Sprite, Water, Coffee, Milk, Juice, Cola Zero, Dr Pepper, Ginger Ale<br>
+  - Sprite beats: Water, Coffee, Milk, Juice, Cola Zero, Dr Pepper, Ginger Ale, Tonic<br>
+  - Water beats: Coffee, Milk, Juice, Cola Zero, Dr Pepper, Ginger Ale, Tonic, Energy Drink<br>
+  - Coffee beats: Milk, Juice, Cola Zero, Dr Pepper, Ginger Ale, Tonic, Energy Drink, Irn Bru<br>
+  - Milk beats: Juice, Cola Zero, Dr Pepper, Ginger Ale, Tonic, Energy Drink, Irn Bru, Pepsi<br>
+  - Juice beats: Cola Zero, Dr Pepper, Ginger Ale, Tonic, Energy Drink, Irn Bru, Pepsi, Seven Up<br>
+  - Cola Zero beats: Dr Pepper, Ginger Ale, Tonic, Energy Drink, Irn Bru, Pepsi, Seven Up, Coke<br>
+  - Dr Pepper beats: Ginger Ale, Tonic, Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade<br>
+  - Ginger Ale beats: Tonic, Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea<br>
+  - Tonic beats: Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta<br>
+  - Energy Drink beats: Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta, Sprite<br>
+</h3>
+
   </h3>
 
   <button onclick="hello(); irnBru();">Irn Bru</button>
@@ -34,6 +58,7 @@
   <button onclick="hello(); drPepper();">Dr Pepper</button>
   <button onclick="hello(); gingerAle();">Ginger Ale</button>
   <button onclick="hello(); tonic();">Tonic</button>
+  <button onclick="hello(); energy();">Energy Drink</button>
 
   <script>
     let cM = '';
@@ -43,7 +68,7 @@
       const drinks = [
         'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea',
         'Fanta','Sprite','Water','Coffee','Milk','Juice',
-        'Cola Zero','Dr Pepper','Ginger Ale','Tonic'
+        'Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink'
       ];
       cM = drinks[Math.floor(Math.random() * drinks.length)];
       console.log(`Computer picked: ${cM}`);
@@ -51,116 +76,122 @@
 
     function irnBru() {
       if (cM === 'Irn Bru') R = 'Tie';
-      else if (cM === 'Seven Up' || cM === 'Lemonade') R = 'You Win';
+      else if (['Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Irn Bru. Computer picked ${cM}. ${R}`);
     }
 
     function pepsi() {
       if (cM === 'Pepsi') R = 'Tie';
-      else if (cM === 'Irn Bru' || cM === 'Coke') R = 'You Win';
+      else if (['Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Pepsi. Computer picked ${cM}. ${R}`);
     }
 
     function sevenUp() {
       if (cM === 'Seven Up') R = 'Tie';
-      else if (cM === 'Pepsi' || cM === 'Lemonade') R = 'You Win';
+      else if (['Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Seven Up. Computer picked ${cM}. ${R}`);
     }
 
     function coke() {
       if (cM === 'Coke') R = 'Tie';
-      else if (cM === 'Seven Up' || cM === 'Irn Bru') R = 'You Win';
+      else if (['Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Coke. Computer picked ${cM}. ${R}`);
     }
 
     function lemonade() {
       if (cM === 'Lemonade') R = 'Tie';
-      else if (cM === 'Pepsi' || cM === 'Coke' || cM === 'Tea') R = 'You Win';
+      else if (['Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Lemonade. Computer picked ${cM}. ${R}`);
     }
 
     function tea() {
       if (cM === 'Tea') R = 'Tie';
-      else if (cM === 'Pepsi' || cM === 'Coke') R = 'You Win';
+      else if (['Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Tea. Computer picked ${cM}. ${R}`);
     }
 
     function fanta() {
       if (cM === 'Fanta') R = 'Tie';
-      else if (cM === 'Sprite' || cM === 'Water') R = 'You Win';
+      else if (['Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Fanta. Computer picked ${cM}. ${R}`);
     }
 
     function sprite() {
       if (cM === 'Sprite') R = 'Tie';
-      else if (cM === 'Coffee' || cM === 'Milk') R = 'You Win';
+      else if (['Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Sprite. Computer picked ${cM}. ${R}`);
     }
 
     function water() {
       if (cM === 'Water') R = 'Tie';
-      else if (cM === 'Juice' || cM === 'Cola Zero') R = 'You Win';
+      else if (['Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Water. Computer picked ${cM}. ${R}`);
     }
 
     function coffee() {
       if (cM === 'Coffee') R = 'Tie';
-      else if (cM === 'Dr Pepper' || cM === 'Ginger Ale') R = 'You Win';
+      else if (['Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Coffee. Computer picked ${cM}. ${R}`);
     }
 
     function milk() {
       if (cM === 'Milk') R = 'Tie';
-      else if (cM === 'Tonic' || cM === 'Juice') R = 'You Win';
+      else if (['Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Milk. Computer picked ${cM}. ${R}`);
     }
 
     function juice() {
       if (cM === 'Juice') R = 'Tie';
-      else if (cM === 'Fanta' || cM === 'Sprite') R = 'You Win';
+      else if (['Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Juice. Computer picked ${cM}. ${R}`);
     }
 
     function colaZero() {
       if (cM === 'Cola Zero') R = 'Tie';
-      else if (cM === 'Pepsi' || cM === 'Irn Bru') R = 'You Win';
+      else if (['Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Cola Zero. Computer picked ${cM}. ${R}`);
     }
 
     function drPepper() {
       if (cM === 'Dr Pepper') R = 'Tie';
-      else if (cM === 'Seven Up' || cM === 'Lemonade') R = 'You Win';
+      else if (['Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Dr Pepper. Computer picked ${cM}. ${R}`);
     }
 
     function gingerAle() {
       if (cM === 'Ginger Ale') R = 'Tie';
-      else if (cM === 'Tea' || cM === 'Water') R = 'You Win';
+      else if (['Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Ginger Ale. Computer picked ${cM}. ${R}`);
     }
 
     function tonic() {
       if (cM === 'Tonic') R = 'Tie';
-      else if (cM === 'Coke' || cM === 'Milk') R = 'You Win';
+      else if (['Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta'].includes(cM)) R = 'You Win';
       else R = 'You Lose';
       alert(`You Picked Tonic. Computer picked ${cM}. ${R}`);
+    }
+
+    function energy() {
+      if (cM === 'Energy Drink') R = 'Tie';
+      else if (['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite'].includes(cM)) R = 'You Win';
+      else R = 'You Lose';
+      alert(`You Picked Energy Drink. Computer picked ${cM}. ${R}`);
     }
   </script>
 </body>
 </html>
-
