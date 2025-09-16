@@ -60,298 +60,161 @@
   <button onclick="hello(); energy();">Energy Drink</button>
 
   <script>
-    const score = {
-     Wins: 0,
-     Ties: 0,
-    Losses: 0
-    }
-    let cM = '';
-    let R = '';
-    
-    function hello() {
-      const drinks = [
-        'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea',
-        'Fanta','Sprite','Water','Coffee','Milk','Juice',
-        'Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink'
-      ];
-      cM = drinks[Math.floor(Math.random() * drinks.length)];
-      console.log(`Computer picked: ${cM}`);
-    }
+const score = { Wins:0, Ties:0, Losses:0 };
+let cM = '';
+let R = '';
 
-    function irnBru() {
-      if (cM === 'Irn Bru') R = 'Tie';
-      else if (['Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Irn Bru. Computer picked ${cM}. ${R}`);
-    }
-
-    function pepsi() {
-      if (cM === 'Pepsi') R = 'Tie';
-      else if (['Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Pepsi. Computer picked ${cM}. ${R}`);
-    }
-
-    function sevenUp() {
-      if (cM === 'Seven Up') R = 'Tie';
-      else if (['Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Seven Up. Computer picked ${cM}. ${R}`);
-    }
-
-    function coke() {
-      if (cM === 'Coke') R = 'Tie';
-      else if (['Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Coke. Computer picked ${cM}. ${R}`);
-    }
-
-    function lemonade() {
-      if (cM === 'Lemonade') R = 'Tie';
-      else if (['Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Lemonade. Computer picked ${cM}. ${R}`);
-    }
-
-    function tea() {
-      if (cM === 'Tea') R = 'Tie';
-      else if (['Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Tea. Computer picked ${cM}. ${R}`);
-    }
-
-    function fanta() {
-      if (cM === 'Fanta') R = 'Tie';
-      else if (['Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Fanta. Computer picked ${cM}. ${R}`);
-    }
-
-    function sprite() {
-      if (cM === 'Sprite') R = 'Tie';
-      else if (['Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
-}
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
+function hello() {
+  const drinks = ['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink'];
+  cM = drinks[Math.floor(Math.random() * drinks.length)];
+  console.log(`Computer picked: ${cM}`);
 }
 
-      alert(`You Picked Sprite. Computer picked ${cM}. ${R}`);
-    }
+function updateScore() {
+  if (R === 'You Win') score.Wins++;
+  else if (R === 'Tie') score.Ties++;
+  else score.Losses++;
+}
 
-    function water() {
-      if (cM === 'Water') R = 'Tie';
-      else if (['Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function irnBru() {
+  if (cM==='Irn Bru') R='Tie';
+  else if (['Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Irn Bru. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Water. Computer picked ${cM}. ${R}`);
-    }
 
-    function coffee() {
-      if (cM === 'Coffee') R = 'Tie';
-      else if (['Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function pepsi() {
+  if (cM==='Pepsi') R='Tie';
+  else if (['Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Pepsi. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Coffee. Computer picked ${cM}. ${R}`);
-    }
 
-    function milk() {
-      if (cM === 'Milk') R = 'Tie';
-      else if (['Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function sevenUp() {
+  if (cM==='Seven Up') R='Tie';
+  else if (['Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Seven Up. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Milk. Computer picked ${cM}. ${R}`);
-    }
 
-    function juice() {
-      if (cM === 'Juice') R = 'Tie';
-      else if (['Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function coke() {
+  if (cM==='Coke') R='Tie';
+  else if (['Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Coke. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Juice. Computer picked ${cM}. ${R}`);
-    }
 
-    function colaZero() {
-      if (cM === 'Cola Zero') R = 'Tie';
-      else if (['Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function lemonade() {
+  if (cM==='Lemonade') R='Tie';
+  else if (['Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Lemonade. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Cola Zero. Computer picked ${cM}. ${R}`);
-    }
 
-    function drPepper() {
-      if (cM === 'Dr Pepper') R = 'Tie';
-      else if (['Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function tea() {
+  if (cM==='Tea') R='Tie';
+  else if (['Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Tea. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Dr Pepper. Computer picked ${cM}. ${R}`);
-    }
 
-    function gingerAle() {
-      if (cM === 'Ginger Ale') R = 'Tie';
-      else if (['Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function fanta() {
+  if (cM==='Fanta') R='Tie';
+  else if (['Sprite','Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Fanta. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Ginger Ale. Computer picked ${cM}. ${R}`);
-    }
 
-    function tonic() {
-      if (cM === 'Tonic') R = 'Tie';
-      else if (['Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function sprite() {
+  if (cM==='Sprite') R='Tie';
+  else if (['Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Sprite. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
-}
-else {
-score.Losses += 1;
-}
-      alert(`You Picked Tonic. Computer picked ${cM}. ${R}`);
-    }
 
-    function energy() {
-      if (cM === 'Energy Drink') R = 'Tie';
-      else if (['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite'].includes(cM)) R = 'You Win';
-      else R = 'You Lose';
-      if (R === 'You Win') {
-score.Wins += 1;
+function water() {
+  if (cM==='Water') R='Tie';
+  else if (['Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Water. Computer picked ${cM}. ${R}`);
 }
-else if (R === 'Tie') {
-score.Ties += 1;
+
+function coffee() {
+  if (cM==='Coffee') R='Tie';
+  else if (['Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Coffee. Computer picked ${cM}. ${R}`);
 }
-else {
-score.Losses += 1;
+
+function milk() {
+  if (cM==='Milk') R='Tie';
+  else if (['Juice','Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Milk. Computer picked ${cM}. ${R}`);
 }
-      alert(`You Picked Energy Drink. Computer picked ${cM}. ${R}`);
-    }
-  </script>
+
+function juice() {
+  if (cM==='Juice') R='Tie';
+  else if (['Cola Zero','Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Juice. Computer picked ${cM}. ${R}`);
+}
+
+function colaZero() {
+  if (cM==='Cola Zero') R='Tie';
+  else if (['Dr Pepper','Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Cola Zero. Computer picked ${cM}. ${R}`);
+}
+
+function drPepper() {
+  if (cM==='Dr Pepper') R='Tie';
+  else if (['Ginger Ale','Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Dr Pepper. Computer picked ${cM}. ${R}`);
+}
+
+function gingerAle() {
+  if (cM==='Ginger Ale') R='Tie';
+  else if (['Tonic','Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Ginger Ale. Computer picked ${cM}. ${R}`);
+}
+
+function tonic() {
+  if (cM==='Tonic') R='Tie';
+  else if (['Energy Drink','Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Tonic. Computer picked ${cM}. ${R}`);
+}
+
+function energy() {
+  if (cM==='Energy Drink') R='Tie';
+  else if (['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite'].includes(cM)) R='You Win';
+  else R='You Lose';
+  updateScore();
+  alert(`You Picked Energy Drink. Computer picked ${cM}. ${R}`);
+}
+</script>
 </body>
 </html>
+
 
 
 
