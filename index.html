@@ -187,6 +187,12 @@ function energy() {
   updateScore();
   alert(`You Picked Energy Drink. Computer picked ${cM}. ${R}. Score: ${score.Wins} Wins, ${score.Ties} Ties, ${score.Losses} Losses`);
 }
+  function reset(){
+score.Ties = 0;
+score.Wins = 0;
+score.Losses = 0;
+alert(`new game`)
+}
 </script>
 </body>
 </html>
