@@ -13,6 +13,66 @@
 h4 {
 color: red;
 }
+#IrnBru{
+background-color: orange;
+color: blue;
+}
+#Pepsi{
+background-color: purple;
+color: red;
+}
+#Seven Up{
+background-color: green;
+color: yellow;
+}
+#Coke{
+background-color: red;
+}
+#Lemonade{
+background-color: yellow;
+color: green;
+}
+#Fanta{
+background-color: yellow;
+color: orange;
+}
+#Sprite{
+background-color: orange;
+color: blue;
+}
+#Water{
+background-color: blue;
+}
+#Coffee{
+background-color: black;
+}
+#Juice{
+background-color: black;
+color: purple;
+}
+#ColaZero{
+background-color: red;
+color: blue;
+}
+#DrPepper{
+background-color: blue;
+color: red;
+}
+#GingerAle{
+background-color: orange;
+
+}
+#Tonic{
+color: blue;
+}
+#EnergyDrink{
+background-color: blue;
+color: orange;
+}
+#SevenUp{
+background-color: yellow;
+color: green;
+}
 </style>
 </head>
 <body>
@@ -37,26 +97,26 @@ Each drink beats 8 others, loses to 8 others, and ties only with itself.
 - Tonic beats: Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta
 - Energy Drink beats: Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta, Sprite
   </h4>
-  <button onclick="h(); irnBru();">Irn Bru</button>
-  <button onclick="h(); pepsi();">Pepsi</button>
-  <button onclick="h(); sevenUp();">Seven Up</button>
-  <button onclick="h(); coke();">Coke</button>
-  <button onclick="h(); lemonade();">Lemonade</button>
-  <button onclick="h(); tea();">Tea</button>
-  <button onclick="h(); fanta();">Fanta</button>
-  <button onclick="h(); sprite();">Sprite</button>
-  <button onclick="h(); water();">Water</button>
-  <button onclick="h(); coffee();">Coffee</button>
-  <button onclick="h(); milk();">Milk</button>
-  <button onclick="h(); juice();">Juice</button>
-  <button onclick="h(); colaZero();">Cola Zero</button>
-  <button onclick="h(); drPepper();">Dr Pepper</button>
-  <button onclick="h(); gingerAle();">Ginger Ale</button>
-  <button onclick="h(); tonic();">Tonic</button>
-  <button onclick="h(); energy();">Energy Drink</button>
+  <button id = "IrnBru" onclick="h(); irnBru();">Irn Bru</button>
+  <button id="Pepsi"onclick= "h(); pepsi(); ">Pepsi</button>
+  <button id="SevenUp" onclick="h(); sevenUp(); ">Seven Up</button>
+  <button id="Coke"onclick="h(); coke();">Coke</button>
+  <button id="Lemonade"onclick="h(); lemonade();">Lemonade</button>
+  <button id="Tea"onclick="h(); tea();">Tea</button>
+  <button id="Fanta" onclick="h(); fanta();">Fanta</button>
+  <button id="Sprite"onclick="h(); sprite();">Sprite</button>
+  <button id="Water" onclick="h(); water();">Water</button>
+  <button id="Coffee" onclick="h(); coffee(); ">Coffee</button>
+  <button id="Milk" onclick="h(); milk(); ">Milk</button>
+  <button id="Juice" onclick="h(); juice();">Juice</button>
+  <button id="ColaZero" onclick="h(); colaZero(); ">Cola Zero</button>
+  <button id="DrPepper" onclick="h(); drPepper(); ">Dr Pepper</button>
+  <button id="GingerAle" onclick="h(); gingerAle();">Ginger Ale</button>
+  <button id="Tonic"onclick="h(); tonic(); ">Tonic</button>
+  <button id="EnergyDrink"onclick="h(); energy();">Energy Drink</button>
   <button onclick="reset()"> New Game </button>
 <script>
-const score = { Wins: 0, Ties: 0, Losses: 0 };
+const score = JSON.parse(localStorage.getItem('score'))||{ Wins: 0, Ties: 0, Losses: 0 };
 let cM = '';
 let R = '';
 function h() {
@@ -68,6 +128,7 @@ function updateScore() {
   if (R === 'You Win') score.Wins++;
   else if (R === 'Tie') score.Ties++;
   else score.Losses++;
+localStorage.setItem('score', JSON.stringify(score));
 }
 function irnBru() {
   if (cM==='Irn Bru') R='Tie';
@@ -192,10 +253,10 @@ function energy() {
 score.Ties = 0;
 score.Wins = 0;
 score.Losses = 0;
+localStorage.setItem('score', JSON.stringify(score));
 alert(`new game`)
 }
 </script>
 </body>
 </html>
-
 
