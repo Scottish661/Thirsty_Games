@@ -69,6 +69,10 @@ color: blue;
 background-color: blue;
 color: orange;
 }
+#ShirleyTemple {
+background-color: pink;
+color: orange;
+}
 </style>
 </head>
 <body>
@@ -92,7 +96,9 @@ Pick a drink and face the computer!<br><br>
 <b>Dr Pepper</b> → Ginger Ale, Tonic, Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade<br>
 <b>Ginger Ale</b> → Tonic, Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea<br>
 <b>Tonic</b> → Energy Drink, Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta<br>
-<b>Energy Drink</b> → Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta, Sprite
+<b>Energy Drink</b> → Irn Bru, Pepsi, Seven Up, Coke, Lemonade, Tea, Fanta, Sprite<br>
+<b>Arnold Palmer</b> → Irn Bru, Ginger Ale, Seven Up, Coke, Lemonade, Tonic, Fanta, Sprite, Pepsi<br>
+<b>Shirley Temple</b> → Irn Bru, Lemonade, Tea, Fanta, Sprite, Water, Coffee, Milk, Arnold Palmer
 </h4>
 <button id="IrnBru" onclick="play('Irn Bru')">Irn Bru</button>
 <button id="Pepsi" onclick="play('Pepsi')">Pepsi</button>
@@ -111,6 +117,8 @@ Pick a drink and face the computer!<br><br>
 <button id="GingerAle" onclick="play('Ginger Ale')">Ginger Ale</button>
 <button id="Tonic" onclick="play('Tonic')">Tonic</button>
 <button id="EnergyDrink" onclick="play('Energy Drink')">Energy Drink</button>
+<button id="Fanta" onclick="play('Arnold Palmer')">Arnold Palmer</button>
+<button id="ShirleyTemple" onclick="play('Shirley Temple')">Shirley Temple</button>
 <button id="NEW" onclick="resetGame()">New Game</button>
 <script>
 const score = JSON.parse(localStorage.getItem('score')) || {
@@ -121,26 +129,28 @@ const score = JSON.parse(localStorage.getItem('score')) || {
 const drinks = [
   'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite',
   'Water','Coffee','Milk','Juice','Cola Zero','Dr Pepper','Ginger Ale',
-  'Tonic','Energy Drink'
+  'Tonic','Energy Drink','Arnold Palmer','Shirley Temple'
 ]
 const rules = {
-  "Irn Bru": ["Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Water"],
-  "Pepsi": ["Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Water","Coffee"],
-  "Seven Up": ["Coke","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk"],
-  "Coke": ["Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk","Juice"],
-  "Lemonade": ["Tea","Fanta","Sprite","Water","Coffee","Milk","Juice","Cola Zero"],
-  "Tea": ["Fanta","Sprite","Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper"],
-  "Fanta": ["Sprite","Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale"],
-  "Sprite": ["Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic"],
-  "Water": ["Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink"],
-  "Coffee": ["Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru"],
-  "Milk": ["Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi"],
-  "Juice": ["Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up"],
-  "Cola Zero": ["Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke"],
-  "Dr Pepper": ["Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade"],
-  "Ginger Ale": ["Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea"],
-  "Tonic": ["Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta"],
-  "Energy Drink": ["Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Sprite"]
+  "Irn Bru": ["Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Water","Shirley Temple"],
+  "Pepsi": ["Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Arnold Palmer"],
+  "Seven Up": ["Coke","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk","Shirley Temple"],
+  "Coke": ["Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk","Juice","Arnold Palmer"],
+  "Lemonade": ["Tea","Fanta","Sprite","Water","Coffee","Milk","Juice","Cola Zero","Shirley Temple"],
+  "Tea": ["Fanta","Sprite","Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Arnold Palmer"],
+  "Fanta": ["Sprite","Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Shirley Temple"],
+  "Sprite": ["Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Arnold Palmer"],
+  "Water": ["Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Shirley Temple"],
+  "Coffee": ["Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Arnold Palmer"],
+  "Milk": ["Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Shirley Temple"],
+  "Juice": ["Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Arnold Palmer"],
+  "Cola Zero": ["Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Shirley Temple"],
+  "Dr Pepper": ["Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Arnold Palmer"],
+  "Ginger Ale": ["Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Shirley Temple"],
+  "Tonic": ["Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Arnold Palmer"],
+  "Energy Drink": ["Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Shirley Temple"],
+  "Arnold Palmer": ["Irn Bru","Ginger Ale","Seven Up","Coke","Lemonade","Tonic","Fanta","Sprite","Pepsi"],
+  "Shirley Temple": ["Irn Bru","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk", "Arnold Palmer"]
 }
 function play(move){
   const cm = drinks[Math.floor(Math.random() * drinks.length)]
@@ -150,14 +160,15 @@ function play(move){
     score.Ties++
   }
   else if (rules[move].includes(cm)){
-    r = "You Lose"
-    score.Losses++
-  }
-  else{
     r = "You Win"
     score.Wins++
   }
+  else{
+    r = "You Lose"
+    score.Losses++
+  }
   localStorage.setItem('score', JSON.stringify(score))
+
   alert(
     `you chose ${move}, computer chose ${cm}, ${r}\n` +
     `Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
