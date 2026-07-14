@@ -21,26 +21,20 @@ const drinks = [
   'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero',
   'Dr Pepper','Ginger Ale','Tonic','Energy Drink','Arnold Palmer','Shirley Temple'
 ]
-const rules = {
-  "Irn Bru": ["Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Water","Shirley Temple"],
-  "Pepsi": ["Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Arnold Palmer"],
-  "Seven Up": ["Coke","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk","Shirley Temple"],
-  "Coke": ["Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk","Juice","Arnold Palmer"],
-  "Lemonade": ["Tea","Fanta","Sprite","Water","Coffee","Milk","Juice","Cola Zero","Shirley Temple"],
-  "Tea": ["Fanta","Sprite","Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Arnold Palmer"],
-  "Fanta": ["Sprite","Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Shirley Temple"],
-  "Sprite": ["Water","Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Arnold Palmer"],
-  "Water": ["Coffee","Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Shirley Temple"],
-  "Coffee": ["Milk","Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Arnold Palmer"],
-  "Milk": ["Juice","Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Shirley Temple"],
-  "Juice": ["Cola Zero","Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Arnold Palmer"],
-  "Cola Zero": ["Dr Pepper","Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Shirley Temple"],
-  "Dr Pepper": ["Ginger Ale","Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Arnold Palmer"],
-  "Ginger Ale": ["Tonic","Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Shirley Temple"],
-  "Tonic": ["Energy Drink","Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Arnold Palmer"],
-  "Energy Drink": ["Irn Bru","Pepsi","Seven Up","Coke","Lemonade","Tea","Fanta","Sprite","Shirley Temple"],
-  "Arnold Palmer": ["Irn Bru","Ginger Ale","Seven Up","Coke","Lemonade","Tonic","Fanta","Sprite","Pepsi"],
-  "Shirley Temple": ["Irn Bru","Lemonade","Tea","Fanta","Sprite","Water","Coffee","Milk", "Arnold Palmer"]
+const rules = {};
+
+for(let drink of drinks){
+  rules[drink] = [];
+
+  while(rules[drink].length < 9){
+
+    let randomDrink = drinks[Math.floor(Math.random()*drinks.length)];
+
+    if(randomDrink !== drink && !rules[drink].includes(randomDrink)){
+      rules[drink].push(randomDrink);
+    }
+
+  }
 }
 function play(move){
   const cm = drinks[Math.floor(Math.random() * drinks.length)]
