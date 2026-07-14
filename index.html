@@ -16,7 +16,7 @@
 <div id="buttons"></div>
 <button id="NEW" onclick="resetGame()">New Game</button>
 <script>
-const score = JSON.parse(localStorage.getItem('score')) || { Wins: 0, Losses: 0, Ties: 0}
+const score = JSON.parse(localStorage.getItem('score')) || { Wins: 0, Losses: 0, Ties: 0};
 const drinks = [
   'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero',
   'Dr Pepper','Ginger Ale','Tonic','Energy Drink','Arnold Palmer','Shirley Temple'
@@ -58,88 +58,18 @@ function resetGame(){
   localStorage.setItem('score', JSON.stringify(score))
   alert("Score reset!")
 }
-const colors = {
-  "Irn Bru": {
-    background:"orange",
-    text:"blue"
-  },
-  "Pepsi": {
-    background:"purple",
-    text:"red"
-  },
-  "Seven Up": {
-    background:"green",
-    text:"yellow"
-  },
-  "Coke": {
-    background:"red",
-    text:"white"
-  },
-  "Lemonade": {
-    background:"yellow",
-    text:"green"
-  },
-  "Tea": {
-    background:"brown",
-    text:"green"
-  },
-  "Fanta": {
-    background:"yellow",
-    text:"orange"
-  },
-  "Sprite": {
-    background:"orange",
-    text:"blue"
-  },
-  "Water": {
-    background:"blue",
-    text:"white"
-  },
-  "Coffee": {
-    background:"black",
-    text:"white"
-  },
-  "Milk": {
-    background:"white",
-    text:"black"
-  },
-  "Juice": {
-    background:"black",
-    text:"purple"
-  },
-  "Cola Zero": {
-    background:"red",
-    text:"blue"
-  },
-  "Dr Pepper": {
-    background:"blue",
-    text:"red"
-  },
-  "Ginger Ale": {
-    background:"orange",
-    text:"black"
-  },
-  "Tonic": {
-    background:"white",
-    text:"blue"
-  },
-  "Energy Drink": {
-    background:"blue",
-    text:"orange"
-  },
-  "Arnold Palmer": {
-    background:"yellow",
-    text:"brown"
-  },
-  "Shirley Temple": {
-    background:"pink",
-    text:"orange"
-  }
+const colors = {};
+
+for(let drink of drinks){
+  colors[drink] = {
+    background: `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`,
+    text: "white"
+  };
 }
-  const buttonArea = document.getElementById("buttons")
+  const buttonArea = document.getElementById("buttons");
 for (let drink of drinks){
-  buttonArea.innerHTML += 
-  `<button style="background:${colors[drink].background};color:${colors[drink].text}" onclick="play('${drink}')">${drink}</button>`
+buttonArea.innerHTML += 
+`<button style="background:${colors[drink].background};color:${colors[drink].text}; margin:5px" onclick="play('${drink}')">${drink}</button>`
 }
 const h =  document.getElementById("h")
 for (let drink of drinks){
