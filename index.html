@@ -10,75 +10,6 @@
   gtag('js', new Date());
   gtag('config', 'G-Q54QNH51GX');
 </script>
-<style>
-h4 {
-color: red;
-}
-#IrnBru{
-background-color: orange;
-color: blue;
-}
-#Pepsi{
-background-color: purple;
-color: red;
-}
-#SevenUp{
-background-color: green;
-color: yellow;
-}
-#Coke{
-background-color: red;
-}
-#Lemonade{
-background-color: yellow;
-color: green;
-}
-#Fanta{
-background-color: yellow;
-color: orange;
-}
-#ArnoldPalmer{
-background-color: yellow;
-color: orange;
-}
-#Sprite{
-background-color: orange;
-color: blue;
-}
-#Water{
-background-color: blue;
-}
-#Coffee{
-background-color: black;
-color: white;
-}
-#Juice{
-background-color: black;
-color: purple;
-}
-#ColaZero{
-background-color: red;
-color: blue;
-}
-#DrPepper{
-background-color: blue;
-color: red;
-}
-#GingerAle{
-background-color: orange;
-}
-#Tonic{
-color: blue;
-}
-#EnergyDrink{
-background-color: blue;
-color: orange;
-}
-#ShirleyTemple {
-background-color: pink;
-color: orange;
-}
-</style>
 </head>
 <body>
 <div id="h"></div>
@@ -127,11 +58,88 @@ function resetGame(){
   localStorage.setItem('score', JSON.stringify(score))
   alert("Score reset!")
 }
+const colors = {
+  "Irn Bru": {
+    background:"orange",
+    text:"blue"
+  },
+  "Pepsi": {
+    background:"purple",
+    text:"red"
+  },
+  "Seven Up": {
+    background:"green",
+    text:"yellow"
+  },
+  "Coke": {
+    background:"red",
+    text:"white"
+  },
+  "Lemonade": {
+    background:"yellow",
+    text:"green"
+  },
+  "Tea": {
+    background:"brown",
+    text:"green"
+  },
+  "Fanta": {
+    background:"yellow",
+    text:"orange"
+  },
+  "Sprite": {
+    background:"orange",
+    text:"blue"
+  },
+  "Water": {
+    background:"blue",
+    text:"white"
+  },
+  "Coffee": {
+    background:"black",
+    text:"white"
+  },
+  "Milk": {
+    background:"white",
+    text:"black"
+  },
+  "Juice": {
+    background:"black",
+    text:"purple"
+  },
+  "Cola Zero": {
+    background:"red",
+    text:"blue"
+  },
+  "Dr Pepper": {
+    background:"blue",
+    text:"red"
+  },
+  "Ginger Ale": {
+    background:"orange",
+    text:"black"
+  },
+  "Tonic": {
+    background:"white",
+    text:"blue"
+  },
+  "Energy Drink": {
+    background:"blue",
+    text:"orange"
+  },
+  "Arnold Palmer": {
+    background:"yellow",
+    text:"brown"
+  },
+  "Shirley Temple": {
+    background:"pink",
+    text:"orange"
+  }
+}
   const buttonArea = document.getElementById("buttons")
-
 for (let drink of drinks){
   buttonArea.innerHTML += 
-  `<button onclick="play('${drink}')">${drink}</button>`
+  `<button style="background:${colors[drink].background};color:${colors[drink].text}" onclick="play('${drink}')">${drink}</button>`
 }
 const h =  document.getElementById("h")
 for (let drink of drinks){
