@@ -15,61 +15,9 @@
 <div id="h"></div>
 <div id="buttons"></div>
 <button id="NEW" onclick="resetGame()">New Game</button>
-<script>
-const score = JSON.parse(localStorage.getItem('score')) || { Wins: 0, Losses: 0, Ties: 0};
-const drinks = [
-  'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero',
-  'Dr Pepper','Ginger Ale','Tonic','Energy Drink','Arnold Palmer','Shirley Temple'
-]
-const rules = {};
-
-for(let drink of drinks){
-  rules[drink] = [];
-
-  while(rules[drink].length < 9){
-
-    let randomDrink = drinks[Math.floor(Math.random()*drinks.length)];
-
-    if(randomDrink !== drink && !rules[drink].includes(randomDrink)){
-      rules[drink].push(randomDrink);
-    }
-
-  }
-}
-function play(move){
-  const cm = drinks[Math.floor(Math.random() * drinks.length)]
-  let r = ""
-  move === cm
-  ? (r = "Tie", score.Ties++) : rules[move].includes(cm)   ? (r = "You Win", score.Wins++)   : (r = "You Lose", score.Losses++)
-  localStorage.setItem('score', JSON.stringify(score))
-  alert(
-    `you chose ${move}, computer chose ${cm}, ${r}\n` +
-    `Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
-  )
-}
-function resetGame(){
-  Object.assign(score,{Wins:0,Losses:0,Ties:0})
-  localStorage.setItem('score', JSON.stringify(score))
-  alert("Score reset!")
-}
-const colors = {};
-
-for(let drink of drinks){
-  colors[drink] = {
-    background: `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`,
-    text: "white"
-  };
-}
-  const buttonArea = document.getElementById("buttons");
-for (let drink of drinks){
-buttonArea.innerHTML += 
-`<button style="background:${colors[drink].background};color:${colors[drink].text}; margin:5px" onclick="play('${drink}')">${drink}</button>`
-}
-const h =  document.getElementById("h")
-for (let drink of drinks){
-  h.innerHTML += 
-  `<b> ${drink}</b> → ${rules[drink]}<br>`
-}
-</script>
+<script src="storage.js"></script>
+<script src="rules.js"></script>
+<script src="game.js"></script>
+<script src="ui.js"></script>
 </body>
 </html>
