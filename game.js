@@ -7,6 +7,5 @@ function play(move){
   h.textContent = 
     `you chose ${move}, computer chose ${cm}, ${r}\n` +
     `Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
-  )
 }
     
