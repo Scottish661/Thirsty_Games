@@ -1,5 +1,5 @@
 function play(move){
-  const cm = drinks[Math.floor(Math.random() * drinks.length)]
+const cm = allDrinks[Math.floor(Math.random() * allDrinks.length)][Math.floor(Math.random() * drinks.length)]
   let r = ""
   move === cm
   ? (r = "Tie", score.Ties++) : rules[move].includes(cm)   ? (r = "You Win", score.Wins++)   : (r = "You Lose", score.Losses++)
