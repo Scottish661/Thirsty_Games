@@ -1,18 +1,25 @@
-const drinks = [
-  'Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Water','Coffee','Milk','Juice','Cola Zero',
-  'Dr Pepper','Ginger Ale','Tonic','Energy Drink','Arnold Palmer','Shirley Temple'
-]
+const countries = [
+  'Scottish',
+  'English',
+  'American',
+  'Canadian',
+  'Australian'
+];
+const drinks = [ 'Irn Bru', 'Pepsi', 'Seven Up', 'Coke', 'Lemonade', 'Tea', 'Fanta', 'Sprite', 'Water', 'Coffee', 'Milk', 'Juice',
+'Cola Zero', 'Dr Pepper',  'Ginger Ale', 'Tonic', 'Energy Drink'];
 const rules = {};
-for(let drink of drinks){
+let allDrinks = [];
+for (let country of countries) { for (let drink of drinks) {   
+  let countryDrink = country + " " + drink; 
+  allDrinks.push(countryDrink);
+    }}
+for (let drink of allDrinks) {
     rules[drink] = [];
-    while(rules[drink].length < 9){
-        let randomDrink =
-        drinks[Math.floor(Math.random()*drinks.length)];
-        if(
-            randomDrink !== drink &&
-            !rules[drink].includes(randomDrink)
-        ){
-            rules[drink].push(randomDrink);
-        }
+    while (rules[drink].length < 45) {
+        let randomDrink =   allDrinks[Math.floor(Math.random() * allDrinks.length)];
+        if (  randomDrink !== drink && !rules[drink].includes(randomDrink)
+        ) {    rules[drink].push(randomDrink);  }
     }
 }
+
+console.log(rules);
