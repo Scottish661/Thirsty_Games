@@ -6,7 +6,7 @@ for(let drink of drinks){
   };
 }
   const buttonArea = document.getElementById("buttons");
-for (let drink of drinks){
+for (let drink of allDrinks){
 buttonArea.innerHTML += 
 `<button style="background:${colors[drink].background};color:${colors[drink].text}; margin:5px" onclick="play('${drink}')">${drink}</button>`
 }
