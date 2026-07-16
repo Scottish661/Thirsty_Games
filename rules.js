@@ -1,6 +1,6 @@
 const countries = [ 'Scottish', 'English', 'American'];
-const drinks = [ 'Irn Bru', 'Pepsi', 'Seven Up', 'Coke', 'Lemonade', 'Tea', 'Fanta', 'Sprite', 'Water', 'Coffee', 'Milk', 'Juice',
-'Cola Zero', 'Dr Pepper'];
+const drinks = [ 'Irn Bru', 'Pepsi', 'Seven Up', 'Coke', 'Lemonade', 'Tea', 'Fanta', 'Sprite', 'Water', 'Coffee', 'Milk','Cola Zero',
+                'Dr Pepper'];
 const rules = {};
 let allDrinks = [];
 for (let country of countries) { for (let drink of drinks) {   
@@ -9,7 +9,7 @@ for (let country of countries) { for (let drink of drinks) {
     }}
 for (let drink of allDrinks) {
     rules[drink] = [];
-    while (rules[drink].length < 45) {
+    while (rules[drink].length < 19) {
         let randomDrink =   allDrinks[Math.floor(Math.random() * allDrinks.length)];
         if (  randomDrink !== drink && !rules[drink].includes(randomDrink)
         ) {    rules[drink].push(randomDrink);  }}}
