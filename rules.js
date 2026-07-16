@@ -1,6 +1,6 @@
 const countries = [ 'Scottish', 'English', 'American'];
 const drinks = [ 'Irn Bru', 'Pepsi', 'Seven Up', 'Coke', 'Lemonade', 'Tea', 'Fanta', 'Sprite', 'Water', 'Coffee', 'Milk', 'Juice',
-'Cola Zero', 'Dr Pepper',  'Ginger Ale', 'Tonic', 'Energy Drink'];
+'Cola Zero', 'Dr Pepper'];
 const rules = {};
 let allDrinks = [];
 for (let country of countries) { for (let drink of drinks) {   
