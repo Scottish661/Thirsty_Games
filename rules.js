@@ -1,4 +1,4 @@
-const countries = [ 'Scottish', 'English', 'American', 'Canadian', 'Australian'];
+const countries = [ 'Scottish', 'English', 'American', 'Canadian', 'Australian','Irish','Welsh'];
 const drinks = [ 'Irn Bru', 'Pepsi', 'Seven Up', 'Coke', 'Lemonade', 'Tea', 'Fanta', 'Sprite', 'Water', 'Coffee', 'Milk', 'Juice',
 'Cola Zero', 'Dr Pepper',  'Ginger Ale', 'Tonic', 'Energy Drink'];
 const rules = {};
