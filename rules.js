@@ -1,5 +1,5 @@
-const drinks=['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Coffee','Cola Zero','Dr Pepper','Milk','Apple_Juice',
-'water','Orange_juice'];
+const drinks=['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Coffee','Cola Zero','Dr Pepper','Milk',
+'Apple Juice','water','Orange Juice','Hot Chocolate];
 const rules={};
 const winsNeeded = (drinks.length - 1) / 2;
 for(let drink of drinks){
