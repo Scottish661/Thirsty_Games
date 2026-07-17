@@ -1,5 +1,6 @@
-const drinks=['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Coffee','Cola Zero','Dr Pepper','Milk',
-'Apple Juice','water','Orange Juice','Hot Chocolate'];
+const drinks = ['Irn Bru', 'Pepsi', 'Seven Up', 'Coke', 'Lemonade', 'Tea', 'Fanta', 'Sprite', 'Coffee', 'Cola Zero', 'Dr Pepper', 'Milk',
+'Apple Juice', 'Water', 'Orange Juice', 'Hot Chocolate', 'Ginger Ale', 'Root Beer', 'Energy Drink', 'Arnold Palmer', 'Shirley Temple',
+'Grape Juice', 'Cranberry Juice', 'Iced Tea', 'Limeade', 'Sparkling Water', 'Chocolate Milk', 'Mango Juice', 'Pineapple Juice'];
 const rules={};
 const winsNeeded = (drinks.length - 1) / 2;
 for(let drink of drinks){
