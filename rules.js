@@ -8,6 +8,5 @@ for(let i=0;i<drinks.length;i++)for(let j=i+1;j<drinks.length;j++)matchups.push(
 for(let i=matchups.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[matchups[i],matchups[j]]=[matchups[j],matchups[i]]}
 for(let [a,b] of matchups){if(rules[a].length<winsNeeded&&rules[b].length<winsNeeded){if(Math.random()<0.5)rules[a].push(b);
 else rules[b].push(a)}}
-return drinks.every(d=>rules[d].length===winsNeeded)?rules:makeRules();
-}
+return drinks.every(d=>rules[d].length===winsNeeded)?rules:makeRules();}
 const rules=makeRules();
