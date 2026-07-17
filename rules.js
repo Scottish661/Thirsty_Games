@@ -8,3 +8,13 @@ for(let drink of drinks){
   while(rules[drink].length<winsNeeded){
     let randomDrink=drinks[Math.floor(Math.random()*drinks.length)];
     if(randomDrink!==drink&&!rules[drink].includes(randomDrink)){ rules[drink].push(randomDrink);}  }}
+
+    if (
+      randomDrink !== drink &&
+      !rules[drink].includes(randomDrink) &&
+      !rules[randomDrink].includes(drink)
+    ) {
+      rules[drink].push(randomDrink);
+    }
+  }
+}
