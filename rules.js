@@ -3,6 +3,6 @@ const drinks=['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Spri
 const rules={};
 for(let drink of drinks){
   rules[drink]=[];
-  while(rules[drink].length<5){
+  while(rules[drink].length<7){
     let randomDrink=drinks[Math.floor(Math.random()*drinks.length)];
     if(randomDrink!==drink&&!rules[drink].includes(randomDrink)){ rules[drink].push(randomDrink);}  }}
