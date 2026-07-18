@@ -1,5 +1,5 @@
-const drinks=['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Coffee','Cola Zero','Dr Pepper','Milk','Apple Juice',
-'Water','Orange Juice','Hot Chocolate','Ginger Ale','Root Beer','Energy Drink','Arnold Palmer','Shirley Temple','Grape Juice',
+const drinks=['Irn Bru','Pepsi','Seven Up','Coke','Lemonade','Tea','Fanta','Sprite','Coffee','Cola Zero','Dr Pepper','Milk','Apple Juice'
+,'Water','Orange Juice','Hot Chocolate','Ginger Ale','Root Beer','Energy Drink','Arnold Palmer','Shirley Temple','Grape Juice',
 'Cranberry Juice','Iced Tea','Limeade','Sparkling Water','Chocolate Milk','Mango Juice','Pineapple Juice'];
 const rules = {};
 for (let drink of drinks) {
