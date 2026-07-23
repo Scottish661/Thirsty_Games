@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>🥤 Thirsty Games</h1>
+<div id="buttons"></div>
+<h2 id="result"></h2>
+
+<script>
+
+const drinks=[
+"Iron Brew","Blue Pop","Lemon Up","Classic Cola","Lemonade",
+"Tea","Orange Fizz","Lime Fizz","Water","Coffee","Milk",
+"Juice","Zero Cola","Doc Fizz","Ginger Ale","Tonic",
+"Energy Drink","Half & Half","Cherry Grenadine"
+]
+
+drinks.sort(()=>Math.random()-.5)
+
+for(const drink of drinks){
+let button=document.createElement("button")
+button.textContent=drink
+
+let colour=[0,1,2].map(()=>Math.random()*256|0)
+button.style.background=`rgb(${colour})`
+button.style.color=colour.reduce((a,b)=>a+b)>384?"black":"white"
+
+button.onclick=()=>play(drink)
+buttons.appendChild(button)
+}
+
+function play(playerDrink){
+
+let computerDrink=drinks[Math.random()*drinks.length|0]
+
+let win=(drinks.indexOf(computerDrink)-drinks.indexOf(playerDrink)+drinks.length)%drinks.length<=drinks.length/2
+
+result.innerHTML=playerDrink+" vs "+computerDrink+"<br>"+
+(playerDrink==computerDrink?"Tie":win?"You Win":"You Lose")
+
+}
+
+</script>
+
+</body>
+</html>
