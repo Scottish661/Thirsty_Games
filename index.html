@@ -131,7 +131,12 @@ Pick a drink and face the computer!<br><br>
 <button id="OrangeFizz" onclick="play('Half & Half')">Half & Half</button>
 <button id="CherryGrenadine" onclick="play('Cherry Grenadine')">Cherry Grenadine</button>
 <button id="NEW" onclick="resetGame()">New Game</button>
+    <input type="color" id="input" onchange="ChangeColor()">
 <script>
+function ChangeColor() {
+    let input = document.getElementById("input").value
+  document.body.style.backgroundColor = input
+}
 const score = JSON.parse(localStorage.getItem('score')) || {
   Wins: 0,
   Losses: 0,
