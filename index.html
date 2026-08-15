@@ -18,6 +18,7 @@ color: red;
 </head>
 <body>
   <h1> for legal reasons names have been changed </h1>
+  <button id="buton"></button>
 <h4>
 🥤 <b>Thirsty Games</b><br>
 Pick a drink and face the computer!<br><br>
@@ -121,13 +122,6 @@ function play(move){
     `you chose ${move}, computer chose ${cm}, ${r}\n` +
     `Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
   )
-}
-function resetGame(){
-  score.Wins = 0
-  score.Losses = 0
-  score.Ties = 0
-  localStorage.setItem('score', JSON.stringify(score))
-  alert("Score reset!")
 }
 function resetGame(){
   score.Wins = 0
