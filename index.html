@@ -48,10 +48,13 @@ Pick a drink and face the computer!<br><br>
 <b>Half & Half</b> → Iron Brew, Ginger Ale, Lemon Up, Classic Cola, Lemonade, Tonic, Orange Fizz, Lime Fizz, Blue Pop<br>
 <b>Cherry Grenadine</b> → Iron Brew, Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Coffee, Milk, Half & Half
 </h4>
+  <h1 id="h"></h1>
 <button onclick="resetGame()">New Game</button>
   <button id="button"></button>
 <input type="color" id="input" onchange="ChangeColor()">
 <script>
+  let button = document.getElementById("button");
+  let h = document.getElementById("h");
 function ChangeColor() {
     let input = document.getElementById("input").value;
     document.body.style.backgroundColor = input;
@@ -117,11 +120,7 @@ function play(move){
     score.Losses++
   }
   localStorage.setItem('score', JSON.stringify(score))
-
-  alert(
-    `you chose ${move}, computer chose ${cm}, ${r}\n` +
-    `Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
-  )
+ h = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
 }
 function resetGame(){
   score.Wins = 0
