@@ -120,7 +120,7 @@ function play(move){
     score.Losses++
   }
   localStorage.setItem('score', JSON.stringify(score))
- h = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
+ h.textContent = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
 }
 function resetGame(){
   score.Wins = 0
