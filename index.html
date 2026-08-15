@@ -11,71 +11,8 @@
   gtag('config', 'G-Q54QNH51GX');
 </script>
 <style>
-  body{
-background-color: black;
-  }
 h4 {
 color: red;
-}
-#IronBrew{
-background-color: orange;
-color: blue;
-}
-#BluePop{
-background-color: purple;
-color: red;
-}
-#LemonUp{
-background-color: green;
-color: yellow;
-}
-#ClassicCola{
-background-color: red;
-}
-#Lemonade{
-background-color: yellow;
-color: green;
-}
-#OrangeFizz{
-background-color: yellow;
-color: orange;
-}
-#LimeFizz{
-background-color: orange;
-color: blue;
-}
-#Water{
-background-color: blue;
-}
-#Coffee{
-background-color: black;
-color: white;
-}
-#Juice{
-background-color: black;
-color: purple;
-}
-#ZeroCola{
-background-color: red;
-color: blue;
-}
-#DocFizz{
-background-color: blue;
-color: red;
-}
-#GingerAle{
-background-color: orange;
-}
-#Tonic{
-color: blue;
-}
-#EnergyDrink{
-background-color: blue;
-color: orange;
-}
-#CherryGrenadine {
-background-color: pink;
-color: orange;
 }
 </style>
 </head>
@@ -111,26 +48,7 @@ Pick a drink and face the computer!<br><br>
 <b>Half & Half</b> → Iron Brew, Ginger Ale, Lemon Up, Classic Cola, Lemonade, Tonic, Orange Fizz, Lime Fizz, Blue Pop<br>
 <b>Cherry Grenadine</b> → Iron Brew, Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Coffee, Milk, Half & Half
 </h4>
-<button id="IronBrew" onclick="play('Iron Brew')">Iron Brew</button>
-<button id="BluePop" onclick="play('Blue Pop')">Blue Pop</button>
-<button id="LemonUp" onclick="play('Lemon Up')">Lemon Up</button>
-<button id="ClassicCola" onclick="play('Classic Cola')">Classic Cola</button>
-<button id="Lemonade" onclick="play('Lemonade')">Lemonade</button>
-<button id="Tea" onclick="play('Tea')">Tea</button>
-<button id="OrangeFizz" onclick="play('Orange Fizz')">Orange Fizz</button>
-<button id="LimeFizz" onclick="play('Lime Fizz')">Lime Fizz</button>
-<button id="Water" onclick="play('Water')">Water</button>
-<button id="Coffee" onclick="play('Coffee')">Coffee</button>
-<button id="Milk" onclick="play('Milk')">Milk</button>
-<button id="Juice" onclick="play('Juice')">Juice</button>
-<button id="ZeroCola" onclick="play('Zero Cola')">Zero Cola</button>
-<button id="DocFizz" onclick="play('Doc Fizz')">Doc Fizz</button>
-<button id="GingerAle" onclick="play('Ginger Ale')">Ginger Ale</button>
-<button id="Tonic" onclick="play('Tonic')">Tonic</button>
-<button id="EnergyDrink" onclick="play('Energy Drink')">Energy Drink</button>
-<button id="OrangeFizz" onclick="play('Half & Half')">Half & Half</button>
-<button id="CherryGrenadine" onclick="play('Cherry Grenadine')">Cherry Grenadine</button>
-<button id="NEW" onclick="resetGame()">New Game</button>
+<button onclick="resetGame()">New Game</button>
 <input type="color" id="input" onchange="ChangeColor()">
 <script>
 function ChangeColor() {
@@ -153,6 +71,14 @@ const drinks = [
   'Water','Coffee','Milk','Juice','Zero Cola','Doc Fizz','Ginger Ale',
   'Tonic','Energy Drink','Half & Half','Cherry Grenadine'
 ]
+function make(drink){
+let R = Math.floor(Math.random() * 256);
+let G = Math.floor(Math.random() * 256);
+let B = Math.floor(Math.random() * 256);
+    button.innerHTML +=`<button style="background-color:rgb(${R},${G},${B});" 
+    onclick="play('${drink}')"> ${drink} </button>`
+}
+drinks.forEach(make)
 const rules = {
   "Iron Brew": ["Blue Pop","Lemon Up","Classic Cola","Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Cherry Grenadine"],
   "Blue Pop": ["Lemon Up","Classic Cola","Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Coffee","Half & Half"],
@@ -195,6 +121,13 @@ function play(move){
     `you chose ${move}, computer chose ${cm}, ${r}\n` +
     `Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
   )
+}
+function resetGame(){
+  score.Wins = 0
+  score.Losses = 0
+  score.Ties = 0
+  localStorage.setItem('score', JSON.stringify(score))
+  alert("Score reset!")
 }
 function resetGame(){
   score.Wins = 0
