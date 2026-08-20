@@ -28,26 +28,8 @@ Pick a drink and face the computer!<br><br>
 • If the computer's drink appears in your drink's <b>→</b> list, <b>You Win</b>.<br>
 • Otherwise, <b>You Lose</b>.<br><br>
 <b>Rules (→ = beats)</b><br><br>
-<b>Iron Brew</b> → Blue Pop, Lemon Up, Classic Cola, Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Cherry Grenadine<br>
-<b>Blue Pop</b> → Lemon Up, Classic Cola, Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Coffee, Half & Half<br>
-<b>Lemon Up</b> → Classic Cola, Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Coffee, Milk, Cherry Grenadine<br>
-<b>Classic Cola</b> → Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Coffee, Milk, Juice, Half & Half<br>
-<b>Lemonade</b> → Tea, Orange Fizz, Lime Fizz, Water, Coffee, Milk, Juice, Zero Cola, Cherry Grenadine<br>
-<b>Tea</b> → Orange Fizz, Lime Fizz, Water, Coffee, Milk, Juice, Zero Cola, Doc Fizz, Half & Half<br>
-<b>Orange Fizz</b> → Lime Fizz, Water, Coffee, Milk, Juice, Zero Cola, Doc Fizz, Ginger Ale, Cherry Grenadine<br>
-<b>Lime Fizz</b> → Water, Coffee, Milk, Juice, Zero Cola, Doc Fizz, Ginger Ale, Tonic, Half & Half<br>
-<b>Water</b> → Coffee, Milk, Juice, Zero Cola, Doc Fizz, Ginger Ale, Tonic, Energy Drink, Cherry Grenadine<br>
-<b>Coffee</b> → Milk, Juice, Zero Cola, Doc Fizz, Ginger Ale, Tonic, Energy Drink, Iron Brew, Half & Half<br>
-<b>Milk</b> → Juice, Zero Cola, Doc Fizz, Ginger Ale, Tonic, Energy Drink, Iron Brew, Blue Pop, Cherry Grenadine<br>
-<b>Juice</b> → Zero Cola, Doc Fizz, Ginger Ale, Tonic, Energy Drink, Iron Brew, Blue Pop, Lemon Up, Half & Half<br>
-<b>Zero Cola</b> → Doc Fizz, Ginger Ale, Tonic, Energy Drink, Iron Brew, Blue Pop, Lemon Up, Classic Cola, Cherry Grenadine<br>
-<b>Doc Fizz</b> → Ginger Ale, Tonic, Energy Drink, Iron Brew, Blue Pop, Lemon Up, Classic Cola, Lemonade, Half & Half<br>
-<b>Ginger Ale</b> → Tonic, Energy Drink, Iron Brew, Blue Pop, Lemon Up, Classic Cola, Lemonade, Tea, Cherry Grenadine<br>
-<b>Tonic</b> → Energy Drink, Iron Brew, Blue Pop, Lemon Up, Classic Cola, Lemonade, Tea, Orange Fizz, Half & Half<br>
-<b>Energy Drink</b> → Iron Brew, Blue Pop, Lemon Up, Classic Cola, Lemonade, Tea, Orange Fizz, Lime Fizz, Cherry Grenadine<br>
-<b>Half & Half</b> → Iron Brew, Ginger Ale, Lemon Up, Classic Cola, Lemonade, Tonic, Orange Fizz, Lime Fizz, Blue Pop<br>
-<b>Cherry Grenadine</b> → Iron Brew, Lemonade, Tea, Orange Fizz, Lime Fizz, Water, Coffee, Milk, Half & Half
 </h4>
+  <div id="show_rules"></div>
   <h1 id="h"></h1>
 <button onclick="resetGame()">New Game</button>
   <button id="button"></button>
@@ -120,15 +102,16 @@ function play(move){
     score.Losses++
   }
   localStorage.setItem('score', JSON.stringify(score))
- h.textContent = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
+ h.textContent = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: 
+ ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
 }
+  for (let drink in rules) { show_rules.innerHTML += `${drink} → ${rules[drink].join(", ")}<br>`;}
 function resetGame(){
   score.Wins = 0
   score.Losses = 0
   score.Ties = 0
   localStorage.setItem('score', JSON.stringify(score))
-  alert("Score reset!")
-}
+  alert("Score reset!")}
 </script>
 </body>
 </html>
