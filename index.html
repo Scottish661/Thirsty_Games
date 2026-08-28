@@ -40,52 +40,32 @@ Pick a drink and face the computer!<br><br>
 function ChangeColor() {
     let input = document.getElementById("input").value;
     document.body.style.backgroundColor = input;
-    localStorage.setItem("backgroundColor", input);
-}
+    localStorage.setItem("backgroundColor", input);}
 let savedColor = localStorage.getItem("backgroundColor");
 if (savedColor) {
     document.body.style.backgroundColor = savedColor;
-    document.getElementById("input").value = savedColor;
-}
+    document.getElementById("input").value = savedColor;}
 const score = JSON.parse(localStorage.getItem('score')) || {
-  Wins: 0,
-  Losses: 0,
-  Ties: 0
-}
+  Wins: 0,Losses: 0,Ties: 0}
 const drinks = [
   'Iron Brew','Blue Pop','Lemon Up','Classic Cola','Lemonade','Tea','Orange Fizz','Lime Fizz',
   'Water','Coffee','Milk','Juice','Zero Cola','Doc Fizz','Ginger Ale',
-  'Tonic','Energy Drink','Half & Half','Cherry Grenadine'
-]
+  'Tonic','Energy Drink','Half & Half','Cherry Grenadine']
 function make(drink){
 let R = Math.floor(Math.random() * 256);
 let G = Math.floor(Math.random() * 256);
 let B = Math.floor(Math.random() * 256);
     button.innerHTML +=`<button style="background-color:rgb(${R},${G},${B});" 
-    onclick="play('${drink}')"> ${drink} </button>`
-}
+    onclick="play('${drink}')"> ${drink} </button>`}
 drinks.forEach(make)
-const rules = {
-  "Iron Brew": ["Blue Pop","Lemon Up","Classic Cola","Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Cherry Grenadine"],
-  "Blue Pop": ["Lemon Up","Classic Cola","Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Coffee","Half & Half"],
-  "Lemon Up": ["Classic Cola","Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Coffee","Milk","Cherry Grenadine"],
-  "Classic Cola": ["Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Coffee","Milk","Juice","Half & Half"],
-  "Lemonade": ["Tea","Orange Fizz","Lime Fizz","Water","Coffee","Milk","Juice","Zero Cola","Cherry Grenadine"],
-  "Tea": ["Orange Fizz","Lime Fizz","Water","Coffee","Milk","Juice","Zero Cola","Doc Fizz","Half & Half"],
-  "Orange Fizz": ["Lime Fizz","Water","Coffee","Milk","Juice","Zero Cola","Doc Fizz","Ginger Ale","Cherry Grenadine"],
-  "Lime Fizz": ["Water","Coffee","Milk","Juice","Zero Cola","Doc Fizz","Ginger Ale","Tonic","Half & Half"],
-  "Water": ["Coffee","Milk","Juice","Zero Cola","Doc Fizz","Ginger Ale","Tonic","Energy Drink","Cherry Grenadine"],
-  "Coffee": ["Milk","Juice","Zero Cola","Doc Fizz","Ginger Ale","Tonic","Energy Drink","Iron Brew","Half & Half"],
-  "Milk": ["Juice","Zero Cola","Doc Fizz","Ginger Ale","Tonic","Energy Drink","Iron Brew","Blue Pop","Cherry Grenadine"],
-  "Juice": ["Zero Cola","Doc Fizz","Ginger Ale","Tonic","Energy Drink","Iron Brew","Blue Pop","Lemon Up","Half & Half"],
-  "Zero Cola": ["Doc Fizz","Ginger Ale","Tonic","Energy Drink","Iron Brew","Blue Pop","Lemon Up","Classic Cola","Cherry Grenadine"],
-  "Doc Fizz": ["Ginger Ale","Tonic","Energy Drink","Iron Brew","Blue Pop","Lemon Up","Classic Cola","Lemonade","Half & Half"],
-  "Ginger Ale": ["Tonic","Energy Drink","Iron Brew","Blue Pop","Lemon Up","Classic Cola","Lemonade","Tea","Cherry Grenadine"],
-  "Tonic": ["Energy Drink","Iron Brew","Blue Pop","Lemon Up","Classic Cola","Lemonade","Tea","Orange Fizz","Half & Half"],
-  "Energy Drink": ["Iron Brew","Blue Pop","Lemon Up","Classic Cola","Lemonade","Tea","Orange Fizz","Lime Fizz","Cherry Grenadine"],
-  "Half & Half": ["Iron Brew","Ginger Ale","Lemon Up","Classic Cola","Lemonade","Tonic","Orange Fizz","Lime Fizz","Blue Pop"],
-  "Cherry Grenadine": ["Iron Brew","Lemonade","Tea","Orange Fizz","Lime Fizz","Water","Coffee","Milk", "Half & Half"]
-}
+const rules = {}
+let wins = (drinks.length - 1) / 2
+for (let i = 0; i < drinks.length; i++) {
+  rules[drinks[i]] = []
+for(let j = 1; j <= wins; j++){
+ let calculate  =  (i + j) % drinks.length
+rules[drinks[i]].push(drinks[calculate])
+}}
 function play(move){
   const cm = drinks[Math.floor(Math.random() * drinks.length)]
   let r = ""
@@ -103,8 +83,7 @@ function play(move){
   }
   localStorage.setItem('score', JSON.stringify(score))
  h.textContent = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: 
- ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`
-}
+ ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`}
   for (let drink in rules) { show_rules.innerHTML += `${drink} → ${rules[drink].join(", ")}<br>`;}
 function resetGame(){
   score.Wins = 0
