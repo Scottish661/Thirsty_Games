@@ -21,25 +21,6 @@ let B = Math.floor(Math.random() * 256);
     button.innerHTML +=`<button style="background-color:rgb(${R},${G},${B});" 
     onclick="play('${drink}')"> ${drink} </button>`}
 drinks.forEach(make)
-function play(move){
-  const cm = drinks[Math.floor(Math.random() * drinks.length)]
-  let r = ""
-  if (move === cm){
-    r = "tie"
-    score.Ties++
-  }
-  else if (rules[move].includes(cm)){
-    r = "You Win"
-    score.Wins++
-  }
-  else{
-    r = "You Lose"
-    score.Losses++
-  }
-  localStorage.setItem('score', JSON.stringify(score))
- h.textContent = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: 
- ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`}
-  for (let drink in rules) { show_rules.innerHTML += `${drink} → ${rules[drink].join(", ")}<br>`;}
 function resetGame(){
   score.Wins = 0
   score.Losses = 0
