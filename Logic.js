@@ -16,9 +16,8 @@ const drinks = [
   'Water','Coffee','Milk','Juice','Zero Cola','Doc Fizz','Ginger Ale',
   'Tonic','Energy Drink','Half & Half','Cherry Grenadine']
 const phonedrinks = drinks.slice(0,7);
-if(window.innerWidth <600){
-gameDrinks = phonedrinks;
-}
-else{
-gameDrinks = drinks;
+if (window.matchMedia("(max-width: 600px)").matches) {
+    gameDrinks = phonedrinks;
+} else {
+    gameDrinks = drinks;
 }
