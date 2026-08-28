@@ -16,4 +16,4 @@ function play(move){
   localStorage.setItem('score', JSON.stringify(score))
  h.textContent = `you chose ${move}, computer chose ${cm}, ${r}\n` +`Wins: 
  ${score.Wins} | Losses: ${score.Losses} | Ties: ${score.Ties}`}
-  for (let drink in rules) { show_rules.innerHTML += `${drink} → ${rules[drink].join(", ")}<br>`;}
+  for (let drink in rules) { show_rules.innerHTML += `${drink} → ${rules[drink].join(", ")}<br>`};
