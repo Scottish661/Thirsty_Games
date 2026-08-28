@@ -1,5 +1,5 @@
 function play(move){
-  const cm = drinks[Math.floor(Math.random() * drinks.length)]
+  const cm = gameDrinks[Math.floor(Math.random() * drinks.length)]
   let r = ""
   if (move === cm){
     r = "tie"
