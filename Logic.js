@@ -1,4 +1,5 @@
 let button = document.getElementById("button");
+let gameDrinks;
   let h = document.getElementById("h");
 function ChangeColor() {
     let input = document.getElementById("input").value;
@@ -14,3 +15,10 @@ const drinks = [
   'Iron Brew','Blue Pop','Lemon Up','Classic Cola','Lemonade','Tea','Orange Fizz','Lime Fizz',
   'Water','Coffee','Milk','Juice','Zero Cola','Doc Fizz','Ginger Ale',
   'Tonic','Energy Drink','Half & Half','Cherry Grenadine']
+const phonedrinks = drinks.slice(0,7);
+if(window.innerWidth <600){
+gameDrinks = phonedrinks;
+}
+else{
+gameDrinks = drinks;
+}
