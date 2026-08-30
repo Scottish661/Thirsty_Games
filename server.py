@@ -18,7 +18,7 @@ def health():
     })
 
 
-@app.route("/halo-world", methods=["GET"])
+@app.route("/hello-world", methods=["GET"])
 def hello_world():
     return jsonify({
         "message": "Halo World"
