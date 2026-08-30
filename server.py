@@ -18,10 +18,10 @@ def health():
     })
 
 
-@app.route("/hello-world", methods=["GET"])
+@app.route("/halo-world", methods=["GET"])
 def hello_world():
     return jsonify({
-        "message": "Hello World"
+        "message": "Halo World"
     })
 
 
