@@ -1,98 +1,82 @@
-from flask import Flask, request, session, redirect, jsonify, send_from_directory
+ from flask import Flask, request, session, redirect, jsonify
 import os
-
-# Use the folder containing this server.py as the main website folder
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 app = Flask(__name__)
-
-# Secret key for Flask sessions
-app.secret_key = os.environ.get("SECRET_KEY", "testing-secret")
-
+# Secret key used for the admin session
+app.secret_key = os.environ.get("SECRET_KEY", "change-this-secret-key")
 # Admin password
 PASSWORD = os.environ.get("ADMIN_PASSWORD", "250976")
-
-# Temporary messages
+# Temporary storage
 messages = []
-
-
 # --------------------------------------------------
-# MAIN THIRSTY GAMES WEBSITE
+# HEALTH CHECK
 # --------------------------------------------------
-
-@app.route("/")
-def home():
-    return send_from_directory(BASE_DIR, "index.html")
-
-
+@app.route("/", methods=["GET"])
+def health():
+    return jsonify({
+        "status": "online",
+        "service": "Thirsty Games backend"
+    })
 # --------------------------------------------------
-# ADMIN LOGIN
+# LOGIN
 # --------------------------------------------------
-
 @app.route("/login", methods=["POST"])
 def do_login():
     password = request.form.get("password", "")
-
     if password == PASSWORD:
         session["admin"] = True
-        return redirect("/")
-
-    return "Wrong password", 401
-
-
+        return jsonify({
+            "success": True,
+            "message": "Logged in"
+        })
+    return jsonify({
+        "success": False,
+        "message": "Wrong password"
+    }), 401
+# --------------------------------------------------
+# LOGOUT
+# --------------------------------------------------
+@app.route("/logout", methods=["POST"])
+def logout():
+    session.clear()
+    return jsonify({
+        "success": True,
+        "message": "Logged out"
+    })
 # --------------------------------------------------
 # ADD MESSAGE
 # --------------------------------------------------
-
 @app.route("/add-message", methods=["POST"])
 def add_message():
     if not session.get("admin"):
-        return "Not allowed", 403
-
-    messages.append("Hello website")
-
-    return redirect("/")
-
-
+        return jsonify({
+            "success": False,
+            "message": "Not allowed"
+        }), 403
+    message = request.form.get("message", "Hello website")
+    messages.append(message)
+    return jsonify({
+        "success": True,
+        "message": "Message added"
+    })
 # --------------------------------------------------
-# MESSAGES API
+# GET MESSAGES
 # --------------------------------------------------
-
-@app.route("/api/messages")
+@app.route("/api/messages", methods=["GET"])
 def get_messages():
     return jsonify(messages)
-
-
 # --------------------------------------------------
-# SERVE ROOT WEBSITE FILES
+# CHECK LOGIN STATUS
 # --------------------------------------------------
-
-@app.route("/<path:filename>")
-def files(filename):
-    # Only allow files that are actually in the main
-    # Thirsty Games folder.
-    allowed_files = {
-        "Logic.js",
-        "make.js",
-        "play.js",
-        "reset.js",
-        "rules.js",
-        "googlea16597665ce2911c.html"
-    }
-
-    if filename in allowed_files:
-        return send_from_directory(BASE_DIR, filename)
-
-    return "File not found", 404
-
-
+@app.route("/api/login-status", methods=["GET"])
+def login_status():
+    return jsonify({
+        "logged_in": bool(session.get("admin"))
+    })
 # --------------------------------------------------
 # START SERVER
 # --------------------------------------------------
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-
     app.run(
         host="0.0.0.0",
         port=port
