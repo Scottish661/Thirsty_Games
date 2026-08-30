@@ -1,6 +1,6 @@
-from flask import Flask, request, session, redirect, jsonify
+from flask import Flask, request, session, redirect, jsonify, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=".")
 
 app.secret_key = "testing-secret"
 
@@ -54,6 +54,19 @@ def add_message():
 @app.route("/api/messages")
 def get_messages():
     return jsonify(messages)
+
+
+@app.route("/game")
+def game():
+    return render_template(
+        "index.html",
+        message="Hello website"
+    )
+
+
+@app.route("/<path:filename>")
+def files(filename):
+    return app.send_static_file(filename)
 
 
 if __name__ == "__main__":
