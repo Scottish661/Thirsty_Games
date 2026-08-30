@@ -1,48 +1,48 @@
-from flask import Flask, request, session, redirect, jsonify
+from flask import Flask, request, session, redirect, jsonify, send_from_directory
 import os
+
+# Use the folder containing this server.py as the main website folder
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__)
 
+# Secret key for Flask sessions
 app.secret_key = os.environ.get("SECRET_KEY", "testing-secret")
 
+# Admin password
 PASSWORD = os.environ.get("ADMIN_PASSWORD", "250976")
 
+# Temporary messages
 messages = []
 
 
+# --------------------------------------------------
+# MAIN THIRSTY GAMES WEBSITE
+# --------------------------------------------------
+
 @app.route("/")
-def login():
-    if session.get("admin"):
-        return """
-        <h1>Admin Panel</h1>
+def home():
+    return send_from_directory(BASE_DIR, "index.html")
 
-        <form action="/add-message" method="post">
-            <button type="submit">Create Hello Website</button>
-        </form>
 
-        <a href="/game">Go to game</a>
-        """
-
-    return """
-    <h1>Admin Login</h1>
-
-    <form action="/login" method="post">
-        <input type="password" name="password">
-        <button type="submit">Sign in</button>
-    </form>
-    """
-
+# --------------------------------------------------
+# ADMIN LOGIN
+# --------------------------------------------------
 
 @app.route("/login", methods=["POST"])
 def do_login():
-    password = request.form.get("password")
+    password = request.form.get("password", "")
 
     if password == PASSWORD:
         session["admin"] = True
         return redirect("/")
 
-    return "Wrong code", 401
+    return "Wrong password", 401
 
+
+# --------------------------------------------------
+# ADD MESSAGE
+# --------------------------------------------------
 
 @app.route("/add-message", methods=["POST"])
 def add_message():
@@ -54,33 +54,46 @@ def add_message():
     return redirect("/")
 
 
+# --------------------------------------------------
+# MESSAGES API
+# --------------------------------------------------
+
 @app.route("/api/messages")
 def get_messages():
     return jsonify(messages)
 
 
-@app.route("/game")
-def game():
-    with open("index.html", "r", encoding="utf-8") as file:
-        html = file.read()
-
-    return html.replace("{{ message }}", "Hello website")
-
+# --------------------------------------------------
+# SERVE ROOT WEBSITE FILES
+# --------------------------------------------------
 
 @app.route("/<path:filename>")
 def files(filename):
-    if filename in [
+    # Only allow files that are actually in the main
+    # Thirsty Games folder.
+    allowed_files = {
         "Logic.js",
-        "rules.js",
+        "make.js",
         "play.js",
         "reset.js",
-        "make.js",
+        "rules.js",
         "googlea16597665ce2911c.html"
-    ]:
-        return open(filename, "r", encoding="utf-8").read()
+    }
+
+    if filename in allowed_files:
+        return send_from_directory(BASE_DIR, filename)
 
     return "File not found", 404
 
 
+# --------------------------------------------------
+# START SERVER
+# --------------------------------------------------
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 10000))
+
+    app.run(
+        host="0.0.0.0",
+        port=port
+    )
