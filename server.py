@@ -1,10 +1,11 @@
-from flask import Flask, request, session, redirect, jsonify, render_template
+from flask import Flask, request, session, redirect, jsonify
+import os
 
-app = Flask(__name__, template_folder=".")
+app = Flask(__name__)
 
-app.secret_key = "testing-secret"
+app.secret_key = os.environ.get("SECRET_KEY", "testing-secret")
 
-PASSWORD = "250976"
+PASSWORD = os.environ.get("ADMIN_PASSWORD", "250976")
 
 messages = []
 
@@ -18,6 +19,8 @@ def login():
         <form action="/add-message" method="post">
             <button type="submit">Create Hello Website</button>
         </form>
+
+        <a href="/game">Go to game</a>
         """
 
     return """
@@ -38,7 +41,7 @@ def do_login():
         session["admin"] = True
         return redirect("/")
 
-    return "Wrong code"
+    return "Wrong code", 401
 
 
 @app.route("/add-message", methods=["POST"])
@@ -58,15 +61,25 @@ def get_messages():
 
 @app.route("/game")
 def game():
-    return render_template(
-        "index.html",
-        message="Hello website"
-    )
+    with open("index.html", "r", encoding="utf-8") as file:
+        html = file.read()
+
+    return html.replace("{{ message }}", "Hello website")
 
 
 @app.route("/<path:filename>")
 def files(filename):
-    return app.send_static_file(filename)
+    if filename in [
+        "Logic.js",
+        "rules.js",
+        "play.js",
+        "reset.js",
+        "make.js",
+        "googlea16597665ce2911c.html"
+    ]:
+        return open(filename, "r", encoding="utf-8").read()
+
+    return "File not found", 404
 
 
 if __name__ == "__main__":
