@@ -1,14 +1,20 @@
- from flask import Flask, request, session, redirect, jsonify
+from flask import Flask, request, session, jsonify
 import os
 app = Flask(__name__)
-# Secret key used for the admin session
-app.secret_key = os.environ.get("SECRET_KEY", "change-this-secret-key")
+# Flask session security
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "change-this-secret-key"
+)
 # Admin password
-PASSWORD = os.environ.get("ADMIN_PASSWORD", "250976")
-# Temporary storage
+PASSWORD = os.environ.get(
+    "ADMIN_PASSWORD",
+    "250976"
+)
+# Temporary message storage
 messages = []
 # --------------------------------------------------
-# HEALTH CHECK
+# BACKEND HEALTH CHECK
 # --------------------------------------------------
 @app.route("/", methods=["GET"])
 def health():
@@ -17,7 +23,7 @@ def health():
         "service": "Thirsty Games backend"
     })
 # --------------------------------------------------
-# LOGIN
+# ADMIN LOGIN
 # --------------------------------------------------
 @app.route("/login", methods=["POST"])
 def do_login():
@@ -33,7 +39,7 @@ def do_login():
         "message": "Wrong password"
     }), 401
 # --------------------------------------------------
-# LOGOUT
+# ADMIN LOGOUT
 # --------------------------------------------------
 @app.route("/logout", methods=["POST"])
 def logout():
@@ -52,7 +58,10 @@ def add_message():
             "success": False,
             "message": "Not allowed"
         }), 403
-    message = request.form.get("message", "Hello website")
+    message = request.form.get(
+        "message",
+        "Hello website"
+    )
     messages.append(message)
     return jsonify({
         "success": True,
