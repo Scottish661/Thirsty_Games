@@ -44,42 +44,10 @@
   <button onclick="resetGame()">New Game</button>
   <button id="button"></button>
   <input type="color" id="input" onchange="ChangeColor()">
-  <!-- BACKEND TEST -->
-  <br><br>
-  <button id="helloButton" type="button">
-    Say Hello
-  </button>
-  <p id="helloMessage"></p>
-  <!-- EXISTING GAME JAVASCRIPT -->
   <script src="Logic.js"></script>
   <script src="rules.js"></script>
   <script src="play.js"></script>
   <script src="reset.js"></script>
   <script src="make.js"></script>
-  <!-- CONNECT EXISTING WEBSITE TO PYTHON BACKEND -->
-  <script>
-    const BACKEND_URL = "https://server-h1ng.onrender.com";
-    document
-      .getElementById("helloButton")
-      .addEventListener("click", async () => {
-        const messageElement =
-          document.getElementById("helloMessage");
-        try {
-          messageElement.textContent = "Connecting...";
-          const response = await fetch(
-            `${BACKEND_URL}/hello-world`
-          );
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
-          const data = await response.json();
-          messageElement.textContent = data.message;
-        } catch (error) {
-          console.error(error);
-          messageElement.textContent =
-            "Could not connect to the backend.";
-        }
-      });
-  </script>
 </body>
 </html>
